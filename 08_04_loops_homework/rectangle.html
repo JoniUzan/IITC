@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>rectangle</h1>
+    <script>
+      w = Number(prompt("enter the width number"));
+      h = Number(prompt("enter the height number"));
+      console.log(w, h);
+      console.log(typeof w, typeof h);
+      while (isNaN(w) || isNaN(h)) {
+        if (isNaN(w)) {
+          w = Number(prompt("enter the width number"));
+        } else if (isNaN(h)) {
+          h = Number(prompt("enter the heigh number"));
+        }
+      }
+      console.log(w * h);
+      console.log(w * 2 + h * 2);
+    </script>
+  </body>
+</html>
