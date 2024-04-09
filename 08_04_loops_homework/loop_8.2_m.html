@@ -6,11 +6,19 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>loop_2_m</h1>
+    <h1>loop_8.2_m</h1>
     <script>
+      //loop_1_m in do while
+      let y = 1;
+      do {
+        console.log(y);
+        y++;
+      } while (y < 101);
+
+      //loop_2_m in do while
       sum = 0;
       let i = 1;
-      while (i <= 5) {
+      do {
         let num = prompt("enter number:");
         while (true) {
           if (isNaN(num) || num.length == 0) {
@@ -21,7 +29,7 @@
           }
         }
         i++;
-      }
+      } while (i <= 5);
       let avg = sum / 5;
       console.log("average is: " + avg);
       console.log("sum is: " + sum);

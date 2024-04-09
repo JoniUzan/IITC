@@ -6,24 +6,35 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>loop_6_m</h1>
+    <h1>loop_8_m</h1>
     <script>
+      //loop_5_m in do while
       let x = 1;
+      let my_num = Number(prompt("enter a number"));
+      let factorial = 1;
+      do {
+        factorial *= x;
+        x++;
+      } while (x < my_num + 1);
+      console.log(factorial);
+
+      //loop_6_m in do while
+      let z = 1;
       my_num = parseInt(prompt("enter your number"));
       let max_num = my_num;
       let min_num = my_num;
-      while (x < 5) {
+      do {
         my_num = parseInt(prompt("enter your number"));
         if (my_num > max_num) {
           max_num = my_num;
         } else if (my_num < min_num) {
           min_num = my_num;
         }
-        x++;
-      }
+        z++;
+      } while (z < 5);
       console.log(max_num);
       console.log(min_num);
-      alert("max is :" + max_num + "min is:" + min_num);
+      alert("max is :" + max + "min is:" + min);
     </script>
   </body>
 </html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>loop_9_m</h1>
+    <script>
+        my_num = parseInt(prompt("enter your number"));
+        let max_num = my_num;
+        let min_num = my_num;
+        if(my_num == 0){
+            console.log(0)
+        }
+       do{
+        my_num = parseInt(prompt("enter your number"));
+        if (my_num > max_num && my_num > 0) {
+          max_num = my_num;
+        } else if (my_num < min_num && my_num > 0) {
+          min_num = my_num;
+        }
+        } while(my_num > 0)
+        console.log(max_num);
+      console.log(min_num);
+      alert("max is :" + max_num + "   min is:" + min_num);
+    </script>
+</body>
+</html>

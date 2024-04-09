@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>loop_10_m</h1>
+    <script>
+      let x = parseInt(prompt("enter your number choose a long one"));
+      let y = x.toString();
+      let num_to_print = 10 ** (y.length - 1);
+      while (num_to_print > 0 && x > 0) {
+        console.log(parseInt(x / num_to_print));
+        x -= num_to_print * parseInt(x / num_to_print);
+        num_to_print = num_to_print / 10;
+      }
+    </script>
+  </body>
+</html>
