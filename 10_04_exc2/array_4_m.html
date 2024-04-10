@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>array_4_m</h1>
+    <script>
+      function only_one(arr) {
+        let sum = 0;
+        let ones = 0;
+        let more_then_one = 0;
+        for (let i = 0; i < arr.length; i++) {
+          for (let j = 0; j < arr.length; j++) {
+            if (arr[i] == arr[j]) {
+              sum++;
+            }
+          }
+          if (sum > 1) {
+            more_then_one++;
+          } else {
+            ones++;
+          }
+          sum = 0;
+        }
+        return ones;
+      }
+      let arr = [1, 3, 5, 1, 4, 3, 1, 3, 7];
+      console.log(only_one(arr));
+    </script>
+  </body>
+</html>

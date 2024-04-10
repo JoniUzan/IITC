@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>js_string_3_b</h1>
+    <script>
+      function maxvalue(string) {
+        let kv_arr = string.split(",");
+        let value_arr = [];
+        for (let i = 0; i < kv_arr.length; i++) {
+          value_arr.push(kv_arr[i].split(":"));
+        }
+        let sum = value_arr[0][1].length;
+        for (i = 1; i < value_arr.length; i++) {
+          if (value_arr[i][1].length > sum) {
+            sum = value_arr[i][1].length;
+          }
+        }
+        console.log(value_arr);
+        return sum
+      }
+
+      let x = maxvalue(
+        "name:nathan, family:kgcx, city:hag"
+      );`
+      console.log(x);
+    </script>
+  </body>
+</html>

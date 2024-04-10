@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>function_9_b</h1>
+    <script>
+      function fibo(num) {
+        let first = 1;
+        let second = 1;
+        let third = first + second;
+        let fibo_list = `${first}, ${second}, ${third}, `;
+        while (third < num) {
+          first = second;
+          second = third;
+          third = first + second;
+          fibo_list += third + ", ";
+        }
+        return fibo_list;
+      }
+      let fibo_test = 55;
+      console.log(fibo(fibo_test));
+    </script>
+  </body>
+</html>

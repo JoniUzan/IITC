@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>function_6_m</h1>
+    <script>
+      let num1 = 90;
+      let num2 = 180;
+
+      function switch_value() {
+        let holder = 0;
+        holder = num1;
+        num1 = num2;
+        num2 = holder;
+
+        return `${num1} num1 ${num2} num2`;
+      }
+      let x = switch_value();
+      console.log(x);
+    </script>
+  </body>
+</html>
