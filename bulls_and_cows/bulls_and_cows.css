@@ -1,0 +1,19 @@
+@import "reset.css";
+
+.pcContainer {
+    max-width: 300px;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr, 1fr; 
+}
+.pcNumberContainer{
+    grid-column: 1 /2;
+    display: flex;
+    justify-content: space-around;
+
+}
+.outcome{
+    grid-column: 2 / 3;
+    display: flex;
+    justify-content: space-around;
+}
