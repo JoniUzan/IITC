@@ -4,45 +4,51 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bulls and Cows</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="bulls_and_cows.css" />
     <link rel="stylesheet" href="reset.css" />
   </head>
   <body>
     <main class="main_container">
-      <div class="header">
-        <h1>Bulls and Cows</h1>
-        <p class="instructions">
-          Discover the hidden code! Click, or use arrow keys, to change your
-          guess in each box. (Bulls and Cows is similar to, but came before, the
-          board game MastermindTM*) Bulls = correct code, correct position. Cows
-          = correct code, wrong position.
-        </p>
-      </div>
-      <div class="pcContainer">
-        <div class="pcNumberContainer">
-          <button class="pcNum1">?</button>
-          <button class="pcNum2">?</button>
-          <button class="pcNum3">?</button>
-          <button class="pcNum4">?</button>
+      <div class="inner_container">
+        <div class="header">
+          <h1>Bulls and Cows</h1>
+          <p class="instructions">
+            Discover the hidden code! Click to change your guess in each box.
+            Bulls = correct code, correct position. Cows = correct code, wrong
+            position, no duplicate allows.
+          </p>
         </div>
-        <div class="outcome">
-          <p>Bulls</p>
-          <p>Cows</p>
+        <div class="pcContainer">
+          <div class="pcNumberContainer">
+            <button class="pcNum1 durk_brown">?</button>
+            <button class="pcNum2">?</button>
+            <button class="pcNum3 durk_brown">?</button>
+            <button class="pcNum4">?</button>
+          </div>
+          <div class="outcome">
+            <p class="bulls">Bulls</p>
+            <p class="cows">Cows</p>
+          </div>
         </div>
-      </div>
-      <div class="outcome"></div>
-      <div class="guess_numbers">
-        <div class="number_buttons">
-          <button onclick="addToNum1()" class="userNum1">0</button>
-          <button onclick="addToNum2()" class="userNum2">1</button>
-          <button onclick="addToNum3()" class="userNum3">2</button>
-          <button onclick="addToNum4()" class="userNum4">3</button>
+        <div class="guess_numbers">
+          <div class="number_buttons">
+            <button onclick="addToNum1()" class="userNum1">0</button>
+            <button onclick="addToNum2()" class="userNum2 durk_brown">1</button>
+            <button onclick="addToNum3()" class="userNum3">2</button>
+            <button onclick="addToNum4()" class="userNum4 durk_brown">3</button>
+          </div>
+          <div class="go_button">
+            <button onclick="countBullsAndCows()">Go!</button>
+          </div>
         </div>
-        <div class="go_button">
-          <button onclick="countBullsAndCows()">Go!</button>
-        </div>
-
-        <button class="new_game">New Game</button>
+        <div class="print"></div>
+        <button onclick="restartGame()" class="new_game">New Game</button>
       </div>
     </main>
     <script src="bulls_and_cows.js"></script>

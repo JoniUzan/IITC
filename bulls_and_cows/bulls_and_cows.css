@@ -1,19 +1,101 @@
 @import "reset.css";
+body {
+  text-align: center;
+  background-image: url("grass_background.jpeg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  display: flex;
+  justify-content: center;
+}
+
+main {
+    margin-top: 60px;
+    padding: 10px;
+    background-color: rgb(255,248,220);
+    border-radius: 15px;
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+}
+.inner_container {
+  max-width: 400px;
+}
 
 .pcContainer {
-    max-width: 300px;
+  margin: 10px;
+  font-size: 20px;
+  max-width: 400px;
   display: grid;
   grid-template-rows: 1fr;
-  grid-template-columns: 1fr, 1fr; 
+  grid-template-columns: 1fr, 1fr;
 }
-.pcNumberContainer{
-    grid-column: 1 /2;
-    display: flex;
-    justify-content: space-around;
+.pcNumberContainer {
+  width: 200px;
+  grid-column: 1 /2;
+  display: flex;
+  justify-content: space-around;
+}
+.outcome {
+    padding-top: 10px;
+  font-size: 18px;
+  width: 200px;
+  grid-column: 2 / 3;
+  display: flex;
+  justify-content: space-around;
+}
 
+.guess_numbers {
+  margin: 10px;
+  font-size: 20px;
+  max-width: 400px;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr, 1fr;
 }
-.outcome{
-    grid-column: 2 / 3;
-    display: flex;
-    justify-content: space-around;
+
+.number_buttons {
+  width: 200px;
+  grid-column: 1 /2;
+  display: flex;
+  justify-content: space-around;
+}
+
+.go_button {
+  width: 200px;
+  grid-column: 2 / 3;
+  display: flex;
+  justify-content: center;
+}
+.new_game {
+  margin: 15px;
+}
+
+button {
+  background-color: rgb(222, 184, 135);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.durk_brown {
+  background-color: rgb(139, 69, 19);
+}
+p{
+    color:#512E1B;
+    font-weight: 500;
+}
+h1{
+    color: #512E1B;
+    font-weight: 700;
+}
+.print{
+    color:#512E1B;
+    font-weight: 700;
+    margin-top:  10px;
 }

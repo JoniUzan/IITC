@@ -7,6 +7,9 @@ let elemUserNum1 = document.querySelector(".userNum1");
 let elemUserNum2 = document.querySelector(".userNum2");
 let elemUserNum3 = document.querySelector(".userNum3");
 let elemUserNum4 = document.querySelector(".userNum4");
+let elembulls = document.querySelector(".bulls");
+let elemcows = document.querySelector(".cows");
+const elemwin = document.querySelector(".print")
 let num1 = 1;
 let num2 = 2;
 let num3 = 3;
@@ -80,12 +83,12 @@ function dupCheck() {
 }
 
 function isWin() {
+   
     if (bulls == 4) {
-         console.log("congratulations you won");
-
+      elemwin.innerHTML = "congratulations you won!!!";
     }
     else {
-        console.log("almost try again");
+       elemwin.innerHTML = "almost try again"
     }
 }
 function countBullsAndCows() {
@@ -136,7 +139,26 @@ function countBullsAndCows() {
   }
   console.log(`bulls${bulls} cows${cows}`);
   isWin();
+  elembulls.innerHTML = `bulls : ${bulls}`
+  elemcows.innerHTML = `cows : ${cows}`
   return [bulls, cows];
 }
 addNumberToPcArray();
 console.log(pcNumberArray);
+
+function restartGame(){
+ randomArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+ pcNumberArray = [];
+ userNumberArray = [0, 1, 2, 3];
+ bulls = 0;
+ cows = 0;
+ addNumberToPcArray()
+ console.log(pcNumberArray);
+ elemUserNum1.innerHTML = "0"
+ elemUserNum2.innerHTML = "1"
+ elemUserNum3.innerHTML = "2"
+ elemUserNum4.innerHTML = "3"
+ elembulls.innerHTML = `bulls`
+ elemcows.innerHTML = `cows`
+ elemwin.innerHTML = ""
+}
