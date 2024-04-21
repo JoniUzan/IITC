@@ -99,6 +99,6 @@ h1{
     font-weight: 700;
     margin-top:  10px;
 }
-.give_up{
-  margin: 15px;
+.give_up, .lust_number{
+  margin: 10px;
 }

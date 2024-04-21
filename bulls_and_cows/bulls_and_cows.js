@@ -84,7 +84,7 @@ function dupCheck() {
 
 function isWin() {
   if (bulls == 4) {
-    elemwin.innerHTML = "congratulations you won!!!";
+    elemwin.innerHTML = "<p>congratulations you won!!!</p>";
   } else {
     elemwin.innerHTML = "almost try again";
   }
@@ -164,4 +164,9 @@ function restartGame() {
 
 function giveUp() {
   elemwin.innerHTML = `the hidden number is ${pcNumberArray[0]}${pcNumberArray[1]}${pcNumberArray[2]}${pcNumberArray[3]}`;
+}
+let numOfGuess = 1;
+function showLustNumber() {
+  elemwin.innerHTML = `Your ${numOfGuess}nd number was ${elemUserNum1.innerHTML}${elemUserNum2.innerHTML}${elemUserNum3.innerHTML}${elemUserNum4.innerHTML}`;
+   numOfGuess++;
 }
