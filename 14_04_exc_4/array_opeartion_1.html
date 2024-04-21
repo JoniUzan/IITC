@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>array_opeartion_1</h1>
+    <script>
+       
+      function addBook(books, book_name, book_pages){
+        let book = {name: book_name, pages: book_pages}
+        books.push(book)
+      }
+       let books = []
+       addBook(books, "harry potter1", 221)
+       addBook(books, "harry 2", 678)
+       addBook(books, "harry potter4", 98)
+       console.log(books)
+    </script>
+</body>
+</html>

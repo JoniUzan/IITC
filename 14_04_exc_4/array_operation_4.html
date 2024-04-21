@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>array_operation_4</h1>
+    <script>
+      function deleteBook(books_arr, name) {
+        let index = 0;
+        for (book_name of books_arr) {
+          if (book_name.name == name) {
+            books_arr.splice(index, 1);
+            return true;
+          }
+          index++;
+        }
+        return false;
+      }
+      let books = [
+        { name: "harry potter1", pages: 221 },
+        { name: "harry potter2", pages: 300 },
+        { name: "harry potter3", pages: 400 },
+        { name: "harry potter4", pages: 500 },
+        { name: "harry potter5", pages: 600 },
+      ];
+
+      console.log(deleteBook(books, "harry potter3"));
+      console.log(books);
+    </script>
+  </body>
+</html>

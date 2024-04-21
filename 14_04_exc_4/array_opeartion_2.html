@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>array_opeartion_2</h1>
+    <script>
+      function getBook(array_books, name) {
+        for (book of array_books) {
+          if (book.name == name) {
+            return book;
+          }
+        }
+        return null;
+      }
+      let books = [
+        { name: "harry potter1", pages: 221 },
+        { name: "harry potter2", pages: 300 },
+        { name: "harry potter3", pages: 400 },
+        { name: "harry potter4", pages: 500 },
+        { name: "harry potter5", pages: 600 },
+      ];
+
+      console.log(getBook(books, "harry potter5"));
+    </script>
+  </body>
+</html>

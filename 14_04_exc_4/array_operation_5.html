@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>array_operation_5</h1>
+    <script>
+      let arr = [9, 4, 3, 9];
+      function in_arr(number) {
+        let is_in = false;
+        let index = 0;
+        for (num of arr) {
+          if (num == number) {
+            arr[index]++;
+            is_in = true;
+          }
+          index++;
+        }
+        if (is_in) {
+          return console.log(arr);
+        }
+        return "your number is not in the array";
+      }
+      console.log(in_arr(9));
+      console.log(in_arr(4));
+      console.log(in_arr(2));
+    </script>
+  </body>
+</html>

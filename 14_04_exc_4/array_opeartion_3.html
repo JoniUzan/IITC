@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>array_opeartion_3</h1>
+    <script>
+      function updateBookPages(books_arr, name, pages) {
+        for (book of books_arr) {
+          if (book.name == name) {
+            book.pages = pages;
+            return book;
+          }
+        }
+        return null;
+      }
+      let books = [
+        { name: "harry potter1", pages: 221 },
+        { name: "harry potter2", pages: 300 },
+        { name: "harry potter3", pages: 400 },
+        { name: "harry potter4", pages: 500 },
+        { name: "harry potter5", pages: 600 },
+      ];
+      console.log(updateBookPages(books, "harry potter4", 4444));
+      console.log(updateBookPages(books, "harry potter7", 777));
+    </script>
+  </body>
+</html>

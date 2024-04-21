@@ -113,8 +113,8 @@ function users_name() {
 }
 
 function player_1_turn() {
-  console.log(board);
-  console.log(space_left);
+  
+  // console.log(space_left);
   let place_on_board = parseInt(
     prompt("player 1 Enter the number you want to place on the board")
   );
@@ -152,8 +152,8 @@ function player_1_turn() {
 }
 
 function player_2_turn() {
-  console.log(board);
-  console.log(space_left);
+  
+  // console.log(space_left);
   let place_on_board = parseInt(
     prompt("pleyr 2 Enter the number you want to place on the board")
   );
@@ -224,24 +224,27 @@ function game() {
   }
 }
 
-let continue_playing = true;
-
-console.log(users_name());
-while (continue_playing) {
-  console.log(game());
-  console.log(win_chart);
-  let play_again = prompt("do you want to play again");
-  if (play_again != "yes") {
-    continue_playing = false;
-    win_chart = [
-      [name1, 0],
-      [name2, 0],
-      ["tie", 0],
-    ];
-    console.log("thank you for playing");
-  } else {
-    board = [];
-    space_left = [];
-    boardSize = parseInt(prompt("Enter the size of the board"));
+function sequence_game() {
+  let continue_playing = true;
+  console.log(users_name());
+  while (continue_playing) {
+    console.log(game());
+    console.log(win_chart);
+    let play_again = prompt("do you want to play again");
+    if (play_again != "yes") {
+      continue_playing = false;
+      win_chart = [
+        [name1, 0],
+        [name2, 0],
+        ["tie", 0],
+      ];
+      console.log("thank you for playing");
+    } else {
+      board = [];
+      space_left = [];
+      boardSize = parseInt(prompt("Enter the size of the board"));
+    }
   }
 }
+
+sequence_game();
