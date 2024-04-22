@@ -85,8 +85,6 @@ function dupCheck() {
 function isWin() {
   if (bulls == 4) {
     elemwin.innerHTML = "<p>congratulations you won!!!</p>";
-  } else {
-    elemwin.innerHTML = "almost try again";
   }
 }
 function countBullsAndCows() {
@@ -150,7 +148,10 @@ function restartGame() {
   userNumberArray = [0, 1, 2, 3];
   bulls = 0;
   cows = 0;
-
+  num1 = 0;
+  num2 = 1;
+  num3 = 2;
+  num4 = 3;
   addNumberToPcArray();
   console.log(pcNumberArray);
   elemUserNum1.innerHTML = "0";
@@ -168,5 +169,5 @@ function giveUp() {
 let numOfGuess = 1;
 function showLustNumber() {
   elemwin.innerHTML = `Your ${numOfGuess}nd number was ${elemUserNum1.innerHTML}${elemUserNum2.innerHTML}${elemUserNum3.innerHTML}${elemUserNum4.innerHTML}`;
-   numOfGuess++;
+  numOfGuess++;
 }
