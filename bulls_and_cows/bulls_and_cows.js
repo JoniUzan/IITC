@@ -33,6 +33,9 @@ function addNumberToPcArray() {
 }
 
 function addToNum1() {
+  if (isWin()) {
+    return "win";
+  }
   elemUserNum1.innerHTML = num1;
   userNumberArray[0] = num1;
   num1++;
@@ -41,6 +44,9 @@ function addToNum1() {
   }
 }
 function addToNum2() {
+  if (isWin()) {
+    return "win";
+  }
   elemUserNum2.innerHTML = num2;
   userNumberArray[1] = num2;
   num2++;
@@ -49,6 +55,9 @@ function addToNum2() {
   }
 }
 function addToNum3() {
+  if (isWin()) {
+    return "win";
+  }
   elemUserNum3.innerHTML = num3;
   userNumberArray[2] = num3;
   num3++;
@@ -58,6 +67,9 @@ function addToNum3() {
 }
 
 function addToNum4() {
+  if (isWin()) {
+    return "win";
+  }
   elemUserNum4.innerHTML = num4;
   userNumberArray[3] = num4;
   num4++;
@@ -85,11 +97,16 @@ function dupCheck() {
 function isWin() {
   if (bulls == 4) {
     elemwin.innerHTML = "<p>congratulations you won!!!</p>";
+    return true;
   }
+  return false;
 }
 function countBullsAndCows() {
   bulls = 0;
   cows = 0;
+  if (isWin()) {
+    return "win";
+  }
   if (dupCheck()) {
     alert("no duplicates allowed change your numbers");
     return [bulls, cows];
@@ -164,10 +181,16 @@ function restartGame() {
 }
 
 function giveUp() {
+  if (isWin()) {
+    return "win";
+  }
   elemwin.innerHTML = `the hidden number is ${pcNumberArray[0]}${pcNumberArray[1]}${pcNumberArray[2]}${pcNumberArray[3]}`;
 }
 let numOfGuess = 1;
 function showLustNumber() {
+  if (isWin()) {
+    return "win";
+  }
   elemwin.innerHTML = `Your ${numOfGuess}nd number was ${elemUserNum1.innerHTML}${elemUserNum2.innerHTML}${elemUserNum3.innerHTML}${elemUserNum4.innerHTML}`;
   numOfGuess++;
 }
