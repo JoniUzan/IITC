@@ -44,6 +44,10 @@ function buildCard(dog) {
       endOfTurn = false;
       activeCard = null;
       revealedCount += 2;
+      if( revealedCount == 16){
+       ``
+        elemCardsContainer.innerHTML = `congratulations, you won!`;
+      }
       guess++;
       elemGuess.innerHTML = `Guess: ${guess}`;
       return;
@@ -77,6 +81,7 @@ createBoard();
 function newGame() {
   elemCardsContainer.innerHTML = null;
   guess = 0;
+  revealedCount = 0;
   elemGuess.innerHTML = `Guess:`;
   cardsArray = [...dogsArray, ...dogsArray];
   createBoard();
