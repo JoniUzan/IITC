@@ -24,32 +24,34 @@
             position, no duplicate allows.
           </p>
         </div>
-        <div class="pcContainer">
-          <div class="pcNumberContainer">
-            <button class="pcNum1 durk_brown">?</button>
-            <button class="pcNum2">?</button>
-            <button class="pcNum3 durk_brown">?</button>
-            <button class="pcNum4">?</button>
+        <div class="number_container">
+          <div class="pcContainer">
+            <div class="pcNumberContainer">
+              <button class="pcNum1 dark_brown">?</button>
+              <button class="pcNum2">?</button>
+              <button class="pcNum3 dark_brown">?</button>
+              <button class="pcNum4">?</button>
+            </div>
+            <div class="outcome">
+              <p class="bulls">Bulls</p>
+              <p class="cows">Cows</p>
+            </div>
+            `
           </div>
-          <div class="outcome">
-            <p class="bulls">Bulls</p>
-            <p class="cows">Cows</p>
-          </div>
-        </div>
-        <div class="guess_numbers">
-          <div class="number_buttons">
-            <button onclick="addToNum1()" class="userNum1">0</button>
-            <button onclick="addToNum2()" class="userNum2 durk_brown">1</button>
-            <button onclick="addToNum3()" class="userNum3">2</button>
-            <button onclick="addToNum4()" class="userNum4 durk_brown">3</button>
-          </div>
-          <div class="go_button">
-            <button onclick="countBullsAndCows()">Go!</button>
+          <div class="guess_numbers">
+            <div class="number_buttons">
+              <button onclick="addToNum1()" class="userNum1">0</button>
+              <button onclick="addToNum2()" class="userNum2 dark_brown">1</button>
+              <button onclick="addToNum3()" class="userNum3">2</button>
+              <button onclick="addToNum4()" class="userNum4 dark_brown">3</button>
+            </div>
+            <div class="go_button">
+              <button onclick="countBullsAndCows()">Go!</button>
+            </div>
           </div>
         </div>
         <div class="print"></div>
         <div>
-          <button onclick="showLustNumber()" class="lust_number">Your lust number</button>
           <button onclick="restartGame()" class="new_game">New Game</button>
           <button onclick="giveUp()" class="give_up">Give up</button>
         </div>

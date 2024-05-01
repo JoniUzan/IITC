@@ -10,36 +10,38 @@ body {
 }
 
 main {
-    margin-top: 60px;
-    padding: 10px;
-    background-color: rgb(255,248,220);
-    border-radius: 15px;
-  max-width: 500px;
+  margin-top: 60px;
+  padding: 40px;
+  background-color: rgb(255, 248, 220);
+  border-radius: 15px;
+  max-width: 1000px;
   display: flex;
   justify-content: center;
 }
 .inner_container {
-  max-width: 400px;
+  max-width: 900px;
 }
-
+.number_container {
+  margin-inline: auto;
+}
 .pcContainer {
   margin: 10px;
   font-size: 20px;
-  max-width: 400px;
+  max-width: 450px;
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 1fr, 1fr;
 }
 .pcNumberContainer {
-  width: 200px;
+  width: 450px;
   grid-column: 1 /2;
   display: flex;
   justify-content: space-around;
 }
 .outcome {
-    padding-top: 10px;
+  padding-top: 10px;
   font-size: 18px;
-  width: 200px;
+  width: 450px;
   grid-column: 2 / 3;
   display: flex;
   justify-content: space-around;
@@ -48,27 +50,37 @@ main {
 .guess_numbers {
   margin: 10px;
   font-size: 20px;
-  max-width: 400px;
+  max-width: 450px;
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 1fr, 1fr;
 }
 
 .number_buttons {
-  width: 200px;
+  width: 450px;
   grid-column: 1 /2;
   display: flex;
   justify-content: space-around;
 }
+.number_buttons button{
+  width: 60px;
+  height: 70px;
+}
+.pcNumberContainer button{
+  width: 60px;
+  height: 70px;
+}
 
 .go_button {
-  width: 200px;
+  width: 450px;
   grid-column: 2 / 3;
   display: flex;
   justify-content: center;
 }
 .new_game {
-  margin: 15px;
+  padding: 15px;
+  margin-top: 30px;
+  margin-inline:40px ;
 }
 
 button {
@@ -80,25 +92,32 @@ button {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 24px;
 }
 
-.durk_brown {
+.dark_brown {
   background-color: rgb(139, 69, 19);
 }
-p{
-    color:#512E1B;
-    font-weight: 500;
+p {
+  color: #512e1b;
+  font-weight: 500;
 }
-h1{
-    color: #512E1B;
-    font-weight: 700;
+h1 {
+  font-size: 38px;
+  color: #512e1b;
+  font-weight: 700;
 }
-.print{
-    color:#512E1B;
-    font-weight: 700;
-    margin-top:  10px;
+.print {
+  color: #512e1b;
+  font-weight: 700;
+  margin-top: 10px;
 }
-.give_up, .lust_number{
-  margin: 10px;
+.give_up
+{
+  margin-inline:40px ;
+  padding: 15px;
+  margin-top: 30px;
+}
+.instructions{
+  margin-bottom: 40px;
 }
