@@ -1,0 +1,76 @@
+/* top nav bar styiling */
+.top_nav_bar {
+  height: 40px;
+  width: 1000px;
+  display: flex;
+  margin-inline: auto;
+}
+.bbc_logo img {
+  margin-top: 8px;
+  margin-right: 8px;
+  width: 100px;
+}
+.sigh_in {
+  display: flex;
+  border-left: 1px #cccccc solid;
+}
+.sigh_in img {
+  width: 25px;
+  height: 23px;
+  margin: 11px 15px;
+}
+.sigh_in span {
+  font-weight: bold;
+  margin-top: 10px;
+  padding-right: 50px;
+}
+.bell_container {
+  display: flex;
+}
+.bell {
+  width: 25px;
+  height: 25px;
+  margin-top: 9px;
+  margin-inline: 8px;
+}
+.top_nav_bar ul {
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+}
+li {
+  font-size: 14.4px;
+  font-weight: bold;
+  padding-inline: 15px;
+  padding-top: 13px;
+  border-left: 1px #cccccc solid;
+}
+.more_arrow {
+  width: 16px;
+  height: 16px;
+  padding-top: 17px;
+}
+.serch_box {
+ display: flex;
+  
+  padding: 5px;
+  border-left: 1px #cccccc solid;
+}
+.serch_box input {
+  margin-block: 5px;
+  background-color: rgb(228, 228, 228);
+  border: none;
+  height: 27px;
+}
+.serch_box input::placeholder{
+    color: black;
+    opacity:1;
+    font-weight: bold;
+}
+.serch_box img{
+    margin-top: 5px;
+    height: 27px;
+}
+.data a{
+  color: black;
+}
