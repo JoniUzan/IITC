@@ -37,7 +37,8 @@
 }
 .main_link:hover,
 .date a:hover,
-.more_links a:hover {
+.more_links a:hover,
+.header_links:hover {
   color: #1167a8;
 }
 .main_content h2 {
@@ -101,8 +102,8 @@ span {
   color: rgb(170, 37, 33);
   padding-left: 10px;
 }
-hr{
-  color:  rgb(170, 37, 33);
+hr {
+  color: rgb(170, 37, 33);
   width: 50px;
   margin-bottom: 10px;
 }
