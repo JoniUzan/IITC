@@ -205,7 +205,7 @@ footer {
   padding: 40px;
 }
 
-@media all and (max-width: 375px) {
+@media all and (max-width: 980px) {
   .header_img {
     width: 300px;
     height: 300px;
@@ -241,15 +241,20 @@ footer {
     flex-direction: column;
   }
   .earth_img {
+    margin-inline: auto;
     max-width: 300px;
     max-height: 300px;
   }
   .bbc_img {
+    margin-inline: auto;
     max-width: 300px;
     max-height: 300px;
-  }
+  }`
 
   .form_container {
+    display: block;
+  }
+  .left_form label {
     display: block;
   }
   .left_form {
@@ -263,9 +268,9 @@ footer {
   }
   .righr_form {
     width: 90%;
-    margin-inline:17px ;
+    margin-inline: 17px;
   }
-  footer{
+  footer {
     font-size: 10px;
     padding-left: 10px;
   }
