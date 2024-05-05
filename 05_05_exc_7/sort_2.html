@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>sort_2</h1>
+    <script>
+      function minNum(arr, indexToStart) {
+        let min = arr[indexToStart];
+        let index = indexToStart;
+        for (let i = indexToStart; i < arr.length; i++) {
+          if (arr[i] < min) {
+            min = arr[i];
+            index = i;
+          }
+        }
+        return index;
+      }
+
+      function sorted(arr) {
+        let indexToStart = 0;
+        let minIndex = minNum(arr, indexToStart);
+        let minNumber = arr[minIndex];
+        for (let i = 0; i < arr.length; i++) {
+          [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
+          indexToStart++;
+          minIndex = minNum(arr, indexToStart);
+          minNumber = arr[minIndex];
+        }
+        return arr;
+      }
+
+      console.log(sorted([56,2,109,15,70]));
+    </script>
+  </body>
+</html>

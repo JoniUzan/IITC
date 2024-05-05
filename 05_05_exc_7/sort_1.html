@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>sort_1</h1>
+    <script>
+      function minNum(arr) {
+        let min = arr[0];
+        let index = 0;
+        for (let i = 1; i < arr.length; i++) {
+          if (arr[i] < min) {
+            min = arr[i];
+            index = i;
+          }
+        }
+        arr.splice(index, 1);
+        return min;
+      }
+
+      function sorted(arr) {
+        let sortArr = [];
+        let length = arr.length;
+        let arrCopy = arr;
+        let numToPush;
+        for (let index = 0; index < length; index++) {
+          numToPush = minNum(arrCopy);
+          sortArr.push(numToPush);
+        }
+        return sortArr;
+      }
+      console.log(sorted([11, 2, 3, 30, 8, 6, 9, 8, 9, 10]));
+
+      // runtime complexities O(N)**2
+    </script>
+  </body>
+</html>
