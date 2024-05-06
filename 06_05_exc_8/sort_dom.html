@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>sort_dom</h1>
+    <button>Min number</button>
+    <div class="min-number"></div>
+    <button onclick="sorted(arrayOfNumbers)" class="sort">sort</button>
+
+    <div class="array-to-sort"></div>
+    <div class="sort-arr"></div>
+    <style>
+      body,
+      button {
+        font-size: 20px;
+      }
+    </style>
+    <script>
+      let elemArrayToSort = document.querySelector(".array-to-sort");
+      let elemMinNumber = document.querySelector(".min-number");
+      let arrayOfNumbers = [11, 2, 3, 30, 8, 6, 9, 8, 9, 10];
+      let elemSortArray = document.querySelector(".sort-arr");
+
+      elemArrayToSort.innerHTML = `<p> ${arrayOfNumbers} </p>`;
+
+      function minNum(arr) {
+        let min = arr[0];
+        let index = 0;
+        for (let i = 1; i < arr.length; i++) {
+          if (arr[i] < min) {`
+            min = arr[i];
+            index = i;
+          }
+        }
+        arr.splice(index, 1);
+        elemMinNumber.innerHTML = `<p>currnt min number is  ${min}</p>`;
+        return min;
+      }
+
+      function sorted(arr) {
+        let sortArr = [];
+        let length = arr.length;
+        let arrCopy = arr;
+        let numToPush;
+
+        if (arrCopy.length <= 0) {
+          return;
+        }
+        numToPush = minNum(arrCopy);
+        sortArr.push(numToPush);
+        elemArrayToSort.innerHTML = `<p> ${arrCopy} </p>`;
+        elemSortArray.innerHTML += `<p>${sortArr}, </p>`;
+        return sortArr;
+      }
+
+      
+    </script>
+  </body>
+</html>

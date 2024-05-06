@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>array_filter_2</h1>
+    <script>
+      function undere34(array) {
+        array = array.filter((obj) => obj.age >= 34);
+
+        return array;
+      }
+      let array = [
+        { name: "Moshe Kupernikos", age: 36 },
+        { name: "Shimon", age: 21 },
+        { name: "Joe", age: 34 },
+      ];
+
+      console.log(undere34(array));
+    </script>
+  </body>
+</html>
