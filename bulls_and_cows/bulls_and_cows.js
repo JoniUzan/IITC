@@ -9,7 +9,10 @@ let elemUserNum3 = document.querySelector(".userNum3");
 let elemUserNum4 = document.querySelector(".userNum4");
 let elembulls = document.querySelector(".bulls");
 let elemcows = document.querySelector(".cows");
-const elemwin = document.querySelector(".print");
+const elemwin = document.querySelector(".win");
+const elemMemory = document.querySelector(".memory");
+const elemError = document.querySelector(".error");
+
 let num1 = 1;
 let num2 = 2;
 let num3 = 3;
@@ -87,7 +90,6 @@ function dupCheck() {
       }
     }
     if (dup > 1) {
-      
       return true;
     }
     dup = 0;
@@ -109,7 +111,10 @@ function countBullsAndCows() {
     return "win";
   }
   if (dupCheck()) {
-    elemwin.innerHTML =" <p>No duplicate allowd change your number</p>"
+    elemwin.innerHTML = null;
+    elemMemory.innerHTML = null;
+    elemError.innerHTML = " <p>No duplicate allowd change your number</p>";
+
     return [bulls, cows];
   }
   if (userNumberArray[0] == pcNumberArray[0]) {
@@ -151,6 +156,7 @@ function countBullsAndCows() {
   ) {
     cows++;
   }
+
   showLastNumber();
   console.log(`bulls${bulls} cows${cows}`);
   isWin();
@@ -181,22 +187,27 @@ function restartGame() {
   elembulls.innerHTML = `bulls`;
   elemcows.innerHTML = `cows`;
   elemwin.innerHTML = "";
+  elemMemory.innerHTML = null;
+  elemError.innerHTML = null;
 }
 
 function giveUp() {
   if (isWin()) {
     return "win";
   }
+  elemError.innerHTML = null;
+  elemMemory.innerHTML = null;
   elemwin.innerHTML = ` <p>
     the hidden number is ${pcNumberArray[0]}${pcNumberArray[1]}${pcNumberArray[2]}${pcNumberArray[3]}
    </p>`;
 }
 let numOfGuess = 1;
 function showLastNumber() {
-  
   if (isWin()) {
     return "win";
   }
-  elemwin.innerHTML += `<p>Your ${numOfGuess}nd number was ${elemUserNum1.innerHTML}${elemUserNum2.innerHTML}${elemUserNum3.innerHTML}${elemUserNum4.innerHTML} | Bulls: ${bulls}  Cows: ${cows}  </p>`;
+  elemwin.innerHTML = null;
+  elemError.innerHTML = null;
+  elemMemory.innerHTML += `<p>Your ${numOfGuess}nd number was ${elemUserNum1.innerHTML}${elemUserNum2.innerHTML}${elemUserNum3.innerHTML}${elemUserNum4.innerHTML} | Bulls: ${bulls}  Cows: ${cows}  </p>`;
   numOfGuess++;
 }
