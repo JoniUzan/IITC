@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="axios_0.5.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
+        <div class="wheel"></div>
+        <div class="hamster">
+            <div class="hamster__body">
+                <div class="hamster__head">
+                    <div class="hamster__ear"></div>
+                    <div class="hamster__eye"></div>
+                    <div class="hamster__nose"></div>
+                </div>
+                <div class="hamster__limb hamster__limb--fr"></div>
+                <div class="hamster__limb hamster__limb--fl"></div>
+                <div class="hamster__limb hamster__limb--br"></div>
+                <div class="hamster__limb hamster__limb--bl"></div>
+                <div class="hamster__tail"></div>
+            </div>
+        </div>
+        <div class="spoke"></div>
+    </div>
+    <table class="posts"></table>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script>
+      const url = "https://jsonplaceholder.typicode.com/posts";
+      let table = document.querySelector(".posts");
+     const apiGet = ()=>{
+        const loader = document.querySelector(".wheel-and-hamster")
+        loader.remove()
+         axios
+        .get(url)
+        .then(function (response) {
+          console.log(response);
+          for (let obj of response.data) {
+            
+            table.innerHTML += `<tr>
+                <td>${obj.userId}</td>
+                <td>${obj.id}</td>
+                <td>${obj.title}</td>
+                <td>${obj.body}</td>
+           </tr>`;
+          }
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        })
+        .finally(function () {
+          // always executed
+        });}
+        myTimeout = setTimeout(apiGet, 5000);
+    
+    </script>
+  </body>
+</html>

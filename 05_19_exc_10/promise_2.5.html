@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input class="input" type="text" />
+    <button class="run">run</button>
+    <div class="result"></div>
+
+    <script>
+      const runButton = document.querySelector(".run");
+      
+      const handler = (value) => {
+        const p = document.querySelector(".result")
+        p.innerHTML = `<p>${value}</p>`;
+      };
+
+      const isEvenAsync = (number) => {
+        return new Promise((resolve, reject) => {
+          if (isNaN(number)) {
+            reject("Invalid number");
+          } else if (number % 2 === 0) {
+            resolve("Even");
+          } else {
+            reject("Odd");
+          }
+        });
+      };
+        
+      runButton.addEventListener("click", () => {
+        const textInput = document.querySelector(".input");
+        const inputValue = parseInt(textInput.value, 10);
+        isEvenAsync(inputValue).then(handler).catch(handler);
+      });
+    </script>
+  </body>
+</html>
