@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table class="posts"></table>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script>
+      const postsUrl = "https://jsonplaceholder.typicode.com/posts";
+      const usersUrl = "https://jsonplaceholder.typicode.com/users";
+      let userArray;
+
+      let table = document.querySelector(".posts");
+      const apiGet = () => {
+        axios.get(usersUrl).then(function (response) {
+          userArray = response.data;
+          console.log(userArray);
+          axios
+            .get(postsUrl)
+            .then(function (response) {
+              let postsArray = response.data
+              for (let obj of postsArray) {
+                let userName = userArray[obj.userId-1].name
+                table.innerHTML += `<tr>
+                        <td>${userName}</td>
+                        <td>${obj.id}</td>
+                        <td>${obj.title}</td>
+                        <td>${obj.body}</td>
+                   </tr>`;
+              }
+            })
+            .catch((error) => console.error(error));
+        });
+      };
+      apiGet();
+    </script>
+  </body>
+</html>

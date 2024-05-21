@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div class="result">
+      <p class="users"></p>
+      <p class="posts"></p>
+      <p class="comments"></p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+
+    <script>
+      const postsURL = "https://jsonplaceholder.typicode.com/posts";
+      const usersURL = "https://jsonplaceholder.typicode.com/users";
+      const commentsURL = "https://jsonplaceholder.typicode.com/comments";
+      const posts = document.querySelector(".posts");
+      const user = document.querySelector(".users");
+      const comments = document.querySelector(".comments");
+
+      function getApiPosts() {
+        return axios.get(postsURL).then((response) => response.data.length);
+      }
+      function getApiUsers() {
+        return axios.get(usersURL).then((response) => response.data.length);
+      }
+      function getApiComments() {
+        return axios.get(commentsURL).then((response) => response.data.length);
+      }
+      getApiPosts()
+        .then((response) => {
+          posts.innerHTML = `${response}`;
+          return getApiUsers();
+        })
+        .then((response) => {
+          user.innerHTML = `${response}`;
+          return getApiComments();
+        })
+        .then((response) => (comments.innerHTML = `${response}`));
+    </script>
+  </body>
+</html>
