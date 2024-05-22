@@ -1,0 +1,3 @@
+the id property of a resource  has special meaning in json-server 
+because in every object  the id property is unique and whith thise uniqueness
+we can use this object specificily to change his value or even delete this object

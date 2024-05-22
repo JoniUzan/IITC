@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="createData()" class="posts">click me</button>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script>
+      const serverUrl = "http://localhost:8001/posts";
+      const createData = () => {
+        for (let i = 0; i < 500; i++) {
+          const firstName = `first name ${i}`;
+          const lastName = `last name ${i}`;
+          const post = { first_name: firstName, last_name: lastName };
+          axios.post(serverUrl, post);
+        }
+      };
+
+      
+    </script>
+  </body>
+</html>

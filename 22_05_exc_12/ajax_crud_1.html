@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f4f4f4;
+      }
+
+      button {
+        padding: 10px 15px;
+        border: none;
+        background-color: #007bff;
+        color: #fff;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      form {
+        margin-bottom: 20px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      input {
+        margin-right: 10px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      th,
+      td {
+        padding: 10px;
+        text-align: left;
+        border: 1px solid #ddd;
+      }
+
+      th {
+        background-color: #f4f4f4;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <button onclick="apiGetUsers()">show all users</button>
+    <form action="">
+      <button onclick="createUser()">add user</button>
+      <input class="first-name" placeholder="enter first name" type="text" />
+      <input class="last-name" placeholder="enter last name" type="text" />
+    </form>
+
+    <form action="">
+      <button onclick="deleteUser()">Delete</button>
+      <input class="idToDelete" placeholder="delete user by id" type="text" />
+    </form>
+
+    <form action="">
+      <button onclick="updateUser()">uapdate</button>
+      <input class="id-to-update" placeholder="id to update" type="text" />
+      <input
+        class="update-first-name"
+        placeholder="update first name"
+        type="text"
+      />
+      <input
+        class="update-last-name"
+        placeholder="update last name"
+        type="text"
+      />
+    </form>
+    <table class="users-table"></table>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script>
+      const url = "http://localhost:8001/posts";
+      let table = document.querySelector(".users-table");
+
+      const apiGetUsers = () => {
+        axios.get(url).then(function (response) {
+          for (let obj of response.data) {
+            table.innerHTML += `<tr>
+                <td>${obj.id}</td>
+                <td>${obj.first_name}</td>
+                <td>${obj.last_name}</td>
+           </tr>`;
+          }
+        });
+      };
+
+      const createUser = () => {
+        const firstName = document.querySelector(".first-name").value;
+        const lastName = document.querySelector(".last-name").value;
+        const post = { first_name: firstName, last_name: lastName };
+        axios.post(url, post);
+      };
+
+      const deleteUser = () => {
+        const idToDelete = document.querySelector(".idToDelete").value;
+        axios.delete(`${url}/${idToDelete}`);
+      };
+
+      const updateUser = () => {
+        const idToUpdate = document.querySelector(".id-to-update").value;
+        const firstNameUpdate =
+          document.querySelector(".update-first-name").value;
+        const lastNameUpdate =
+          document.querySelector(".update-last-name").value;
+        axios.patch(`${url}/${idToUpdate}`, {
+          first_name: firstNameUpdate,
+          last_name: lastNameUpdate,
+        });
+      };
+    </script>
+  </body>
+</html>

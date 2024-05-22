@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      console;
+      const f1 = () =>
+        new Promise((resolve, reject) =>
+          setTimeout(() => resolve("f1 called"), 4000)
+        );
+      const f2 = () =>
+        new Promise((resolve, reject) =>
+          setTimeout(() => resolve("f2 called"), 3000)
+        );
+      const f3 = () =>
+        new Promise((resolve, reject) =>
+          setTimeout(() => resolve("f3 called"), 2000)
+        );
+
+      async function result() {
+        console.log(await f1());
+        console.log(await f2());
+        console.log(await f3());
+      }
+      result();
+    </script>
+  </body>
+</html>
