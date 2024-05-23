@@ -11,7 +11,17 @@
         padding: 20px;
         background-color: #f4f4f4;
       }
-
+      a {
+        text-decoration: none;
+        color: white;
+        margin: 10px;
+      }
+      nav {
+        text-align: center;
+        background-color: #0056b3;
+        padding: 20px;
+        margin: 0;
+      }
       button {
         padding: 10px 15px;
         border: none;
@@ -67,7 +77,13 @@
     </style>
   </head>
   <body>
-    <button onclick="apiGetUsers()">show all users</button>
+    <nav>
+      <a href="ajax_crud_1_users.html">users</a>
+      <a href="ajax_crud_2.html">books</a>
+    </nav>
+    <button onclick="apiGetUsers()" style="margin-block: 10px">
+      show all users
+    </button>
     <form action="">
       <button onclick="createUser()">add user</button>
       <input class="first-name" placeholder="enter first name" type="text" />

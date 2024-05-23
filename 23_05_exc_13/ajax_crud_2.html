@@ -11,7 +11,18 @@
         padding: 20px;
         background-color: #f4f4f4;
       }
+      a{
+        text-decoration: none;
+        color: white;
+        margin: 10px;
 
+      }
+      nav {
+        text-align: center;
+        background-color: #0056b3;
+        padding: 20px;
+        margin: 0;
+      }
       button {
         padding: 10px 15px;
         border: none;
@@ -67,42 +78,42 @@
     </style>
   </head>
   <body>
-    <button onclick="apiGetUsers()">show all users</button>
+    <nav>
+      <a href="ajax_crud_1_users.html">users</a>
+      <a href="ajax_crud_2.html">books</a>
+    </nav>
+    <button onclick="apiGetBooks()" style="margin-block: 10px;">show all books</button>
     <form action="">
-      <button onclick="createUser()">add user</button>
-      <input class="first-name" placeholder="enter first name" type="text" />
-      <input class="last-name" placeholder="enter last name" type="text" />
+      <button onclick="createBook()">add book</button>
+      <input class="book-name" placeholder="enter book name" type="text" />
+      <input class="pages" placeholder="enter pages" type="text" />
     </form>
 
     <form action="">
-      <button onclick="deleteUser()">Delete</button>
-      <input class="idToDelete" placeholder="delete user by id" type="text" />
+      <button onclick="deleteBook()">Delete</button>
+      <input class="idToDelete" placeholder="delete book by id" type="text" />
     </form>
 
     <form action="">
-      <button onclick="updateUser()">uapdate</button>
+      <button onclick="updateBook()">uapdate</button>
       <input class="id-to-update" placeholder="id to update" type="text" />
       <input
-        class="update-first-name"
-        placeholder="update first name"
+        class="update-book-name"
+        placeholder="update book name"
         type="text"
       />
-      <input
-        class="update-last-name"
-        placeholder="update last name"
-        type="text"
-      />
+      <input class="update-pages" placeholder="update pages" type="text" />
     </form>
     <button onclick="next()">next</button>
-    <table class="users-table"></table>
+    <table class="books-table"></table>
     <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
     <script>
-      const url = "http://localhost:8001/posts";
-      let table = document.querySelector(".users-table");
+      const url = "http://localhost:8001/books";
+      let table = document.querySelector(".books-table");
       let counter = 1;
       let globalResponse;
 
-      const apiGetUsers = async (i = 1) => {
+      const apiGetBooks = async (i = 1) => {
         globalResponse = await axios
           .get(`${url}?_page=${i}`)
           .then((res) => res.data);
@@ -111,38 +122,37 @@
         const dataElems = data.map((obj) => {
           return `<tr>
               <td>${obj.id}</td>
-              <td>${obj.first_name}</td>
-              <td>${obj.last_name}</td>
+              <td>${obj.book_name}</td>
+              <td>${obj.pages}</td>
          </tr>`;
         });
         table.innerHTML = dataElems.join("");
       };
 
-      const createUser = () => {
-        const firstName = document.querySelector(".first-name").value;
-        const lastName = document.querySelector(".last-name").value;
-        const post = { first_name: firstName, last_name: lastName };
-        axios.post(url, post);
+      const createBook = () => {
+        const bookName = document.querySelector(".first-name").value;
+        const pages = document.querySelector(".last-name").value;
+        const book = { book_name: bookName, pages: pages };
+        axios.post(url, book);
       };
 
-      const deleteUser = () => {
+      const deleteBook = () => {
         const idToDelete = document.querySelector(".idToDelete").value;
         axios.delete(`${url}/${idToDelete}`);
       };
 
-      const updateUser = () => {
+      const updateBook = () => {
         const idToUpdate = document.querySelector(".id-to-update").value;
-        const firstNameUpdate =
-          document.querySelector(".update-first-name").value;
-        const lastNameUpdate =
-          document.querySelector(".update-last-name").value;
+        const bookNameUpdate =
+          document.querySelector(".update-book-name").value;
+        const pagesUpdate = document.querySelector(".update-pages").value;
         axios.patch(`${url}/${idToUpdate}`, {
-          first_name: firstNameUpdate,
-          last_name: lastNameUpdate,
+          first_name: bookNameUpdate,
+          last_name: pagesUpdate,
         });
       };
       const next = () => {
-        apiGetUsers(globalResponse.next);
+        apiGetBooks(globalResponse.next);
       };
     </script>
   </body>
