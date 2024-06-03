@@ -3,9 +3,7 @@ duplicates.includes;
 
 function uniqueValues() {
   return duplicates.reduce((acc, item) => {
-    if (!acc.includes(item)) {
-      acc.push(item);
-    }
+    if (!acc.includes(item)) acc.push(item);
     return acc;
   }, []);
 }
