@@ -1,114 +1,143 @@
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
+import axios from "axios";
 import "./index.css";
 
-const initialTodos = [
-  { id: "1", title: "Learn React", isComplete: false },
-  { id: "2", title: "Build a Todo App", isComplete: false },
-  { id: "3", title: "Read JavaScript Documentation", isComplete: true },
-  { id: "4", title: "Write Unit Tests", isComplete: false },
-  { id: "5", title: "Implement Context", isComplete: true },
-  { id: "6", title: "Create Portfolio Website", isComplete: false },
-  { id: "7", title: "Learn TypeScript", isComplete: false },
-  { id: "8", title: "Refactor Codebase", isComplete: true },
-  { id: "9", title: "Optimize Performance", isComplete: false },
-  { id: "10", title: "Deploy to Production", isComplete: true },
-];
+import { Route, Routes } from "react-router-dom";
+
+import ResponsiveAppBar from "./components/ResponsiveAppBar.jsx";
+
+import HomePage from "./Pages/HomePage";
+import TodoPage from "./Pages/TodoPage";
+import CreateTodoPage from "./Pages/CreateTodoPage.jsx";
+import TodoDetailsPage from "./Pages/TodoDetailsPage";
+import NotFoundPage from "./Pages/NotFoundPage.jsx";
+import SideBarPage from "./Pages/SideBarPage.jsx";
 
 function App() {
-  //states
-  const [todos, setTodos] = useState(initialTodos);
-  const [newTodo, setNewTodo] = useState("");
-
-  const completedTodos = todos.filter((todo) => todo.isComplete).length;
-  const activeTodos = todos.filter((todo) => !todo.isComplete).length;
-
-  function makeId(length) {
-    let result = "";
-    const characters =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    const charactersLength = characters.length;
-    for (let i = 0; i < length; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-  }
-
-  function removeTodo(todoId) {
-    const newTodo = todos.filter((todo) => todo.id !== todoId);
-    setTodos(newTodo);
-  }
-
-  function addTodo(ev) {
-    ev.preventDefault();
-    const newTodoObj = {
-      id: makeId(10),
-      title: newTodo,
-      isComplete: false,
-    };
-
-    const newTodosList = [...todos];
-    newTodosList.push(newTodoObj);
-
-    setTodos(newTodosList);
-    setNewTodo("");
-  }
-
-  function isComplete(todoId) {
-    const newTodos = todos.map((todo) => {
-      if (todo.id === todoId && todo.isComplete) {
-        return { ...todo, isComplete: false };
-      } else if (todo.id === todoId && !todo.isComplete) {
-        return { ...todo, isComplete: true };
-      }
-      return todo;
-    });
-    setTodos(newTodos);
-  }
-
   return (
     <>
       <div>
-        <h3>Add new todo</h3>
-        <form onSubmit={addTodo}>
-          <input
-            type="text"
-            placeholder="Titel"
-            value={newTodo}
-            onChange={(ev) => {
-              setNewTodo(ev.target.value);
-              console.log(newTodo);
-            }}
-          />
-          <button>Add</button>
-        </form>
+        <ResponsiveAppBar />
       </div>
 
-      <progress value={completedTodos / todos.length} />
-      {todos.length === 0 ? (
-        <p>No todos available</p>
-      ) : (
-        <ul>
-          {todos.map((todo) => {
-            return (
-              <li key={todo.id}>
-                <label htmlFor="">{todo.title}</label>
-                <input
-                  type="checkbox"
-                  defaultChecked={todo.isComplete}
-                  onClick={() => isComplete(todo.id)}
-                />
-                <button onClick={() => removeTodo(todo.id)}>Remove todo</button>
-              </li>
-            );
-          })}
-        </ul>
-      )}
-      <p>Total todos {todos.length}</p>
-      <p>Complete Todos {completedTodos}</p>
-      <p>Active Todos {activeTodos}</p>
+      <Routes>
+        <Route path="home" element={<HomePage />} />
+
+        <Route path="/todos" element={<SideBarPage />}>
+          <Route index element={<TodoPage />} />
+
+          <Route path="createTodo" element={<TodoPage />}>
+            <Route index element={<CreateTodoPage />} />
+          </Route>
+
+          <Route path=":id" element={<TodoDetailsPage />} />
+        </Route>
+
+        <Route path="/notfound" element={<NotFoundPage />} />
+      </Routes>
     </>
   );
+
+  //states
+  // const [todos, setTodos] = useState([]);
+  // const [newTodo, setNewTodo] = useState("");
+  // const baseUrl = "http://localhost:8001/todo";
+
+  // let todoData;
+
+  // useEffect(() => {
+  //   axios
+  //     .get(baseUrl)
+  //     .then(function (response) {
+  //       todoData = response.data;
+  //       setTodos(todoData);
+  //     })
+  //     .catch(function (error) {
+  //       console.log("error fetching");
+  //     });
+
+  //   // console.log("Hello");
+  // }, []);
+
+  // useEffect(() => {
+  //   console.log(todos);
+  // }, [todos]);
+
+  // const completedTodos = todos.filter((todo) => todo.isComplete).length;
+  // const activeTodos = todos.filter((todo) => !todo.isComplete).length;
+
+  // async function removeTodo(todoId) {
+  //   console.log(todoId);
+  //   axios.delete(`${baseUrl}/${todoId}`);
+
+  //   const newTodo = todos.filter((todo) => todo.id !== todoId);
+  //   setTodos(newTodo);
+  //   console.log(newTodo);
+  // }
+
+  // function addTodo(ev) {
+  //   ev.preventDefault();
+  //   const newTodoObj = {
+  //     id: makeId(10),
+  //     title: newTodo,
+  //     isComplete: false,
+  //   };
+  //   axios
+  //     .post(baseUrl, {
+  //       ...newTodoObj,
+  //     })
+  //     .then(function (response) {
+  //       console.log(response.data);
+  //     })
+  //     .catch(function (error) {
+  //       console.log("error update the data");
+  //     });
+
+  //   const newTodosList = [...todos];
+  //   newTodosList.push(newTodoObj);
+
+  //   setTodos(newTodosList);
+  //   setNewTodo("");
+  // }
+
+  // function isComplete(todoId, status) {
+  //   console.log("function trigerred");
+  //   let newTodo;
+  //   const newTodos = todos.map((todo) => {
+  //     if (todo.id === todoId) {
+  //       newTodo = { ...todo, isComplete: status };
+  //       return newTodo;
+  //     }
+  //     return todo;
+  //   });
+
+  //   setTodos(newTodos);
+  //   axios.patch(`${baseUrl}/${todoId}`, newTodo);
+  // }
+
+  // return (
+  //   <>
+  //     <main>
+  //       <AddTodo addTodo={addTodo} setNewTodo={setNewTodo} newTodo={newTodo} />
+
+  //       <TodoStatistics
+  //         todosLength={todos.length}
+  //         completedTodos={completedTodos}
+  //         activeTodos={activeTodos}
+  //       />
+  //       {todos.length === 0 ? (
+  //         <p>No todos available</p>
+  //       ) : (
+  //         <TodoList
+  //           setTodos={setTodos}
+  //           todos={todos}
+  //           isComplete={isComplete}
+  //           removeTodo={removeTodo}
+  //         />
+  //       )}
+  //     </main>
+  //   </>
+  // );
 }
 
 export default App;
