@@ -1,11 +1,22 @@
+//Libraries
 import React from "react";
 import { useState, useEffect } from "react";
+import axios from "axios";
+import {
+  Link,
+  Outlet,
+  useLocation,
+  useNavigate,
+  useSearchParams,
+} from "react-router-dom";
+
+//My components
 import { TodoStatistics } from "../components/TodoStatistics";
 import { TodoList } from "../components/TodoList";
-import axios from "axios";
 import SimpleSnackbar from "../components/SimpleSnackbar";
+
+//Mui
 import Button from "@mui/material/Button";
-import { Link, Outlet, useNavigate, useSearchParams } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
@@ -20,9 +31,10 @@ function TodoPage() {
     q: "",
     isComplete: false,
   });
+  const locastion = useLocation();
 
   const isComplete = searchParams.get("isComplete") === "true";
-  const q = searchParams.get("q");
+  const q = searchParams.get("q" || "");
 
   const baseUrl = "http://localhost:8001/todos";
 
@@ -43,10 +55,10 @@ function TodoPage() {
       });
 
     console.log("useEffect render");
-  }, []);
+  }, [locastion.pathname]);
 
   const filteredArray = todos.filter((todo) => {
-    return todo.title.toLowerCase().includes(q.toLowerCase());
+    if (q !== null) return todo.title.toLowerCase().includes(q.toLowerCase());
   });
 
   async function removeTodo(todoId) {
@@ -100,7 +112,6 @@ function TodoPage() {
           <TodoList
             setTodos={setTodos}
             todos={filteredArray}
-            // isComplete={isComplete}
             removeTodo={removeTodo}
           />
         )}

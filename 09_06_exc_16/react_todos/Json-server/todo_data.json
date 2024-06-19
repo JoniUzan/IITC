@@ -16,7 +16,7 @@
       "id": "3",
       "title": "Read a Book",
       "description": "Read 'Clean Code' by Robert C. Martin",
-      "isComplete": true
+      "isComplete": false
     },
     {
       "id": "4",
@@ -28,19 +28,19 @@
       "id": "5",
       "title": "Grocery Shopping",
       "description": "Buy vegetables and fruits",
-      "isComplete": true
+      "isComplete": false
     },
     {
       "id": "6",
       "title": "Cook Dinner",
       "description": "Prepare a healthy meal",
-      "isComplete": false
+      "isComplete": true
     },
     {
       "id": "7",
       "title": "Call a Friend",
       "description": "Catch up with an old friend",
-      "isComplete": false
+      "isComplete": true
     },
     {
       "id": "8",
@@ -79,9 +79,31 @@
       "isComplete": false
     },
     {
-      "id": "9762",
-      "title": "dgdgdgdfg",
+      "id": "dab9",
+      "title": "kokok",
+      "description": "akrKsknszk",
+      "isComplete": false
+    },
+    {
+      "id": "3454",
+      "title": "yoni",
       "description": "",
+      "isComplete": false
+    },
+    {
+      "id": "a1a7",
+      "title": "shimon",
+      "description": "",
+      "isComplete": false
+    },
+    {
+      "id": "5c5f",
+      "title": "dssd",
+      "isComplete": false
+    },
+    {
+      "id": "40e7",
+      "title": "sdfsd",
       "isComplete": false
     }
   ]

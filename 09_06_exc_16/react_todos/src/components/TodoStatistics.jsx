@@ -1,17 +1,13 @@
-//props.todosLength = todo.length --- from App
-
-//props.completedTodos = completedTodos --- from App
-
-//props.activeTodos = activeTodos --- from App
+//Libraries
 import * as React from "react";
-import PropTypes from "prop-types";
+
+//Mui
 import CircularProgress from "@mui/material/CircularProgress";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { colors } from "@mui/material";
-import { WidthFull } from "@mui/icons-material";
 
 function CircularProgressWithLabel(props) {
+  const { value } = props;
   return (
     <Box sx={{ position: "relative", display: "inline-flex" }}>
       <CircularProgress variant="determinate" {...props} />
@@ -28,7 +24,7 @@ function CircularProgressWithLabel(props) {
         }}
       >
         <Typography variant="caption" component="div" color="text.secondary">
-          {`${Math.round(props.value)}%`}
+          {`${Math.round(value)}%`}
         </Typography>
       </Box>
     </Box>
@@ -36,19 +32,20 @@ function CircularProgressWithLabel(props) {
 }
 
 export function TodoStatistics(props) {
+  const { completedTodos, todosLength, activeTodos } = props;
   return (
     <div className="progress-container">
       <div>
         <CircularProgressWithLabel
           sx={{ minWidth: 90 }}
-          value={(props.completedTodos / props.todosLength) * 100}
+          value={(completedTodos / todosLength) * 100}
         />
       </div>
 
       <div className="statitics-container">
-        <p>Total todos {props.todosLength}</p>
-        <p>Complete Todos {props.completedTodos}</p>
-        <p>Active Todos {props.activeTodos}</p>
+        <p>Total todos {todosLength}</p>
+        <p>Complete Todos {completedTodos}</p>
+        <p>Active Todos {activeTodos}</p>
       </div>
     </div>
   );

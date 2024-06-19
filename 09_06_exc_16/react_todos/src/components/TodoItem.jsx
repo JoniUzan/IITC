@@ -1,19 +1,16 @@
-//props.todo = todo --- from App.jsx
+//Libraries
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 
-//props.isComplete = isComplete() --- from App.jsx
-
-//props.removeTodo = removeTodo() --- from App.jsx
+//Mui
 import Button from "@mui/material/Button";
 import Checkbox from "@mui/material/Checkbox";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-import axios from "axios";
 import Tooltip from "@mui/material/Tooltip";
-import { Link, useNavigate } from "react-router-dom";
 
-export function TodoItem({ setTodos, todo, removeTodo }) {
+export function TodoItem(props) {
+  const { setTodos, todo, removeTodo } = props;
   const baseUrl = "http://localhost:8001/todos";
-
-  const navigate = useNavigate();
 
   function handleCheck() {
     let newTodo;

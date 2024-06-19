@@ -1,15 +1,10 @@
-//props.addTodo = addTodo() --- from App
-
-//props.setNewTodo = setNewTodo() --- from App
-
-//props.newTodo = newTodo --- from setNewTodo() on  App
+//Mui
 import Button from "@mui/material/Button";
 import AddIcon from "@mui/icons-material/Add";
 import { Add } from "@mui/icons-material";
 import TextField from "@mui/material/TextField";
 import Tooltip from "@mui/material/Tooltip";
 import { TextareaAutosize } from "@mui/base/TextareaAutosize";
-
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
@@ -52,10 +47,9 @@ export function AddTodo(props) {
                   </Button>
                 </Tooltip>
               </div>
-              <TextareaAutosize
-                aria-label="minimum height"
-                minRows={5}
-                placeholder="Description"
+              <TextField
+                variant="outlined"
+                label="Description"
                 ref={descriptionValue}
               />
             </form>

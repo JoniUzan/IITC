@@ -1,21 +1,18 @@
-//props.todos = todos --- from App.jsx
-
-//props.isComplete = isComplete --- from App.jsx
-
-//props.removeTodo = removeTodo --- from App.jsx
-
+//Libraries
 import { TodoItem } from "./TodoItem";
 
 export function TodoList(props) {
+  const { todos, removeTodo, setTodos } = props;
+
   return (
     <ul className="todo-list">
-      {props.todos.map((todo) => {
+      {todos.map((todo) => {
         return (
           <TodoItem
             key={todo.id}
             todo={todo}
-            removeTodo={props.removeTodo}
-            setTodos={props.setTodos}
+            removeTodo={removeTodo}
+            setTodos={setTodos}
           />
         );
       })}

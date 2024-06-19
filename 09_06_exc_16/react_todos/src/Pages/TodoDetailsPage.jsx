@@ -1,8 +1,12 @@
+//Libraries
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { TodoItem } from "../components/TodoItem";
 import { useParams, useSearchParams } from "react-router-dom";
+
+//My components
 import TodoDetails from "../components/TodoDetails";
+
+//Mui
 import Card from "@mui/material/Card";
 
 function TodoDetailsPage() {
