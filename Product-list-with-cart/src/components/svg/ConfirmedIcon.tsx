@@ -1,7 +1,7 @@
 function ConfirmedIcon() {
   return (
     <svg
-      width="48"
+      width="36"
       height="48"
       viewBox="0 0 48 48"
       fill="none"

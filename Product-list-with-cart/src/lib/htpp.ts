@@ -23,6 +23,19 @@ export async function getProducts() {
     return products;
   }
 }
+
+export async function updateProduct({ newProduct }: { newProduct: Product }) {
+  try {
+    await axios.patch(`${baseURL}products/${newProduct.id}`, newProduct);
+    console.log("updateProduct: product updatetd on  successfully");
+  } catch (error) {
+    console.error(
+      "updateProduct: error while trying to update product ",
+      error
+    );
+  }
+}
+
 export async function getCart() {
   let cart;
   try {

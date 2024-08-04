@@ -10,9 +10,12 @@ import { Button } from "../ui/button";
 import RemoveIcon from "../svg/RemoveIcon";
 import { Product } from "@/pages/ProductsPage";
 import CarbonIcon from "../svg/CarbonIcon";
+import { useCart } from "@/context/CartProvider";
+import { useNavigate } from "react-router-dom";
 
 export interface CartItem {
   id: string;
+  image: string;
   name: string;
   quantity: number;
   price: number;
@@ -21,25 +24,25 @@ export interface CartItem {
 
 interface CartProps {
   products: Product[];
-  cart: CartItem[];
-  cartError: boolean;
-  cartLoading: boolean;
-  deleteProductHandler: ({ id, updatedProduct }: { id: string; updatedProduct: Product }) => void
 }
 
-function Cart({
-  cartError,
-  cart,
-  cartLoading,
-  deleteProductHandler,
-  products,
-}: CartProps) {
+function Cart({ products }: CartProps) {
+  const navigate = useNavigate();
+
+  const {
+    cart,
+    cartLoading,
+    cartError,
+
+    deleteProductHandler,
+  } = useCart();
+
   let cartContent;
 
   function totalPrice() {
     let totalPrice = 0;
 
-    cart.forEach((item: CartItem) => {
+    cart?.forEach((item: CartItem) => {
       totalPrice += item.totalPrice;
     });
 
@@ -97,7 +100,7 @@ function Cart({
                       });
                     }
                   }}
-                  className="border border-Rose-300 rounded-full p-[2px] my-5 hover:border-Rose-900 hover:fill-Rose-900 hover:stroke-Rose-900"
+                  className="group border border-Rose-300 rounded-full p-[2px] my-5 hover:border-Rose-900 "
                 >
                   <RemoveIcon />
                 </button>
@@ -117,7 +120,10 @@ function Cart({
             <span>delivery</span>
           </div>
         </div>
-        <Button className="w-full bg-Red text-white py-6 border-none hover:text-white hover:bg-">
+        <Button
+          onClick={() => navigate("/cartDetails")}
+          className="w-full bg-Red text-white py-6 border-none hover:text-white hover:bg-"
+        >
           Confirm Order
         </Button>
       </div>

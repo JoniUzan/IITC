@@ -7,28 +7,23 @@ import AddToCartIcon from "../svg/AddToCartIcon";
 
 import IncrementIcon from "../svg/IncrementIcon";
 import DecrementIcon from "../svg/DecrementIcon";
+import { useCart } from "@/context/CartProvider";
 
 interface ProductCardProps {
   product: Product;
-  addToCartHandler: (
-    product: CartItem,
-    updatedProduct: Product,
-    id: string
-  ) => void;
-  cart: CartItem[];
-  decrementHandler: (product: CartItem) => void;
-  incrementHandler: (product: CartItem) => void;
-
 }
 
-function ProductCard({
-  product,
-  addToCartHandler,
-  cart,
-  decrementHandler,
-  incrementHandler,
- 
-}: ProductCardProps) {
+function ProductCard({ product }: ProductCardProps) {
+  const {
+    cart,
+
+    addToCartHandler,
+
+    incrementHandler,
+
+    decrementHandler,
+  } = useCart();
+
   const imagePath = new URL(
     `../../assets/images/${product.image.desktop}`,
     import.meta.url
@@ -61,7 +56,7 @@ function ProductCard({
               <Button className="px-6 bg-Red text-white flex relative bottom-5 left-12 border-none hover:text-white gap-10">
                 <button
                   onClick={() => {
-                    let productToUpdate = cart.find((item) => {
+                    let productToUpdate = cart?.find((item) => {
                       return item.id === product.id;
                     });
                     if (productToUpdate) {
@@ -75,7 +70,7 @@ function ProductCard({
                 {totalAmountOnCart()}
                 <button
                   onClick={() => {
-                    let productToUpdate = cart.find((item) => {
+                    let productToUpdate = cart?.find((item) => {
                       return item.id === product.id;
                     });
 
@@ -94,6 +89,7 @@ function ProductCard({
                   addToCartHandler(
                     {
                       id: product.id,
+                      image: product.image.desktop,
                       name: product.name,
                       price: product.price,
                       quantity: 1,

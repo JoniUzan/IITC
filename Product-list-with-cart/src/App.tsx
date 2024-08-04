@@ -1,11 +1,16 @@
+import { Route, Routes } from "react-router-dom";
 import ProductsPage from "./pages/ProductsPage";
+import ProductDetailsPage from "./pages/ProductDetailsPage";
 
 function App() {
   return (
     <>
-      <div>
-        <ProductsPage />
-      </div>
+      <Routes>
+        <Route path="/" element={<ProductsPage />}>
+          <Route path="cartDetails" element={<ProductDetailsPage />} />
+        </Route>
+      </Routes>
+      
     </>
   );
 }

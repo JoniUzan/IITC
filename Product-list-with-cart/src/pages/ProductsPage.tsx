@@ -1,14 +1,10 @@
 import Cart, { CartItem } from "@/components/self-made/Cart";
 import ProductCard from "@/components/self-made/ProductCard";
-import {
-  addToCart,
-  deleteProduct,
-  getCart,
-  getProducts,
-  queryClient,
-  updateCartAmount,
-} from "@/lib/htpp";
-import { useMutation, useQuery } from "react-query";
+import { useCart } from "@/context/CartProvider";
+import { getProducts } from "@/lib/htpp";
+import { useContext } from "react";
+import { useQuery } from "react-query";
+import { Outlet } from "react-router-dom";
 
 export interface Product {
   id: string;
@@ -36,79 +32,6 @@ function ProductsPage() {
     queryFn: getProducts,
   });
 
-  const {
-    data: cart,
-    isLoading: cartLoading,
-    isError: cartError,
-  } = useQuery({
-    queryKey: ["cart"],
-    queryFn: getCart,
-  });
-
-  const { mutate } = useMutation({
-    mutationFn: addToCart,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["cart"] });
-      queryClient.invalidateQueries({ queryKey: ["products"] });
-    },
-  });
-  const { mutate: incrementMutate } = useMutation({
-    mutationFn: updateCartAmount,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["cart"] });
-      queryClient.invalidateQueries({ queryKey: ["products"] });
-    },
-  });
-  const { mutate: decrementMutate } = useMutation({
-    mutationFn: updateCartAmount,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["cart"] });
-      queryClient.invalidateQueries({ queryKey: ["products"] });
-    },
-  });
-  const { mutate: deleteMutate } = useMutation({
-    mutationFn: deleteProduct,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["cart"] });
-      queryClient.invalidateQueries({ queryKey: ["products"] });
-    },
-  });
-
-  function addToCartHandler(
-    product: CartItem,
-    updatedProduct: Product,
-    id: string
-  ) {
-    mutate({ product, updatedProduct, id });
-  }
-
-  function deleteProductHandler({
-    id,
-    updatedProduct,
-  }: {
-    id: string;
-    updatedProduct: Product;
-  }) {
-    deleteMutate({ id, updatedProduct });
-  }
-
-  function incrementHandler(product: CartItem) {
-    incrementMutate({
-      ...product,
-      quantity: product.quantity + 1,
-      totalPrice: product.totalPrice + product.price,
-    });
-  }
-  function decrementHandler(product: CartItem) {
-    if (product.quantity > 1) {
-      decrementMutate({
-        ...product,
-        quantity: product.quantity - 1,
-        totalPrice: product.totalPrice - product.price,
-      });
-    }
-  }
-
   if (productLoading) {
     productContent = <div>...Loading</div>;
   }
@@ -117,16 +40,7 @@ function ProductsPage() {
   }
   if (products) {
     productContent = products.map((product: Product) => {
-      return (
-        <ProductCard
-          addToCartHandler={addToCartHandler}
-          key={product.name}
-          product={product}
-          cart={cart}
-          incrementHandler={incrementHandler}
-          decrementHandler={decrementHandler}
-        />
-      );
+      return <ProductCard key={product.name} product={product} />;
     });
   }
 
@@ -139,14 +53,9 @@ function ProductsPage() {
         </div>
       </div>
       <div>
-        <Cart
-          cart={cart}
-          cartLoading={cartLoading}
-          cartError={cartError}
-          deleteProductHandler={deleteProductHandler}
-          products={products}
-        />
+        <Cart products={products} />
       </div>
+      <Outlet />
     </main>
   );
 }

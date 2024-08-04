@@ -11,7 +11,7 @@
       "name": "Waffle with Berries",
       "category": "Waffle",
       "price": 6.5,
-      "isOnCart": false
+      "isOnCart": true
     },
     {
       "id": "2",
@@ -24,7 +24,7 @@
       "name": "Vanilla Bean Crème Brûlée",
       "category": "Crème Brûlée",
       "price": 7,
-      "isOnCart": false
+      "isOnCart": true
     },
     {
       "id": "3",
@@ -37,7 +37,7 @@
       "name": "Macaron Mix of Five",
       "category": "Macaron",
       "price": 8,
-      "isOnCart": false
+      "isOnCart": true
     },
     {
       "id": "4",
@@ -50,7 +50,7 @@
       "name": "Classic Tiramisu",
       "category": "Tiramisu",
       "price": 5.5,
-      "isOnCart": false
+      "isOnCart": true
     },
     {
       "id": "5",
@@ -118,5 +118,38 @@
       "isOnCart": false
     }
   ],
-  "cart": []
+  "cart": [
+    {
+      "id": "3",
+      "image": "image-macaron-desktop.jpg",
+      "name": "Macaron Mix of Five",
+      "price": 8,
+      "quantity": 1,
+      "totalPrice": 8
+    },
+    {
+      "id": "2",
+      "image": "image-creme-brulee-desktop.jpg",
+      "name": "Vanilla Bean Crème Brûlée",
+      "price": 7,
+      "quantity": 1,
+      "totalPrice": 7
+    },
+    {
+      "id": "1",
+      "image": "image-waffle-desktop.jpg",
+      "name": "Waffle with Berries",
+      "price": 6.5,
+      "quantity": 1,
+      "totalPrice": 6.5
+    },
+    {
+      "id": "4",
+      "image": "image-tiramisu-desktop.jpg",
+      "name": "Classic Tiramisu",
+      "price": 5.5,
+      "quantity": 1,
+      "totalPrice": 5.5
+    }
+  ]
 }
